@@ -1,3 +1,5 @@
+//objetivo desse arquivo é subir o servidor no ar
+
 const express = require('express');
 const app = express();
 

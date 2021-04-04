@@ -8,8 +8,8 @@ No diretório do projeto:
 
 - Para ver as configurações das rotas de Tarefa e de Usuário, basta digitar no promt de comando:
 
-```npm start ```
+```npm run start ```
 
 - Para reconfigurar as rotas e usufruir da atualização automática, basta digitar no promt de comando:
 
-```npm dev ```
+```npm run dev ```
