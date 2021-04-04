@@ -11,4 +11,5 @@ No diretório do projeto:
 ```npm start ```
 
 - Para reconfigurar as rotas e usufruir da atualização automática, basta digitar no promt de comando:
+
 ```npm dev ```
