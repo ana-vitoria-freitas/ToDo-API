@@ -1,25 +1,31 @@
 const route = 'user';
-const UsuarioModel = require('../models/usuario-model');
+const User = require('../DAO/usuarios-dao');
 function configroute(app, bd){
+  let usuario = new User(bd);
   app.get(`/${route}`, (req, res) => {
-    // res.send(`Rota ativada com get e rota ${route} valores de ${route} devem ser retornados`);
-    res.send(bd);
-  })
-  app.post(`/${route}`, (req, res) => {
-    //res.send("Rota POST de usario ativada: usuario adicionada ao banco de dados");
-    //console.log(res.send(req.body));
-    // const {nome, email, senha} = req.body;
-    const body = req.body;
-    let user = new UsuarioModel(body.nome, body.email, body.senha);
-    if(body.senha && body.nome && body.email){
-      console.log(body);
-      res.send(body);
-      bd.usuario.push(user);
-    }else{
-      res.send("Deu ruim!");
+    usuario.listaUsuarios()
+    .then((rows)=> res.send(rows))
+    .catch((err) => res.send({mensagem: "Falha ao listar usuários"}));
 
-    }
-  })
+  });
+  app.post(`/${route}`, (req, res) => {
+    let UsuarioModel = require('../models/usuario-model');
+    let user = new UsuarioModel(req.body.NOME, req.body.EMAIL, req.body.SENHA, 0);
+    usuario.insereUsuario(user)
+    .then((rows)=> res.send(rows))
+    .catch((err) => res.send({mensagem: "Falha ao listar usuários"}));
+
+  });
+
+  app.delete(`/${route}`, (req, res) =>{
+
+
+  });
+
+  app.put(`/${route}`, (req, res) =>{
+
+
+  });
 }
 
 module.exports = configroute;
