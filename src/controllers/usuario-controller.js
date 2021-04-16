@@ -1,5 +1,6 @@
 const route = 'user';
 const User = require('../DAO/usuarios-dao');
+const UsuarioModel = require('../models/usuario-model');
 function configroute(app, bd){
   let usuario = new User(bd);
   app.get(`/${route}`, (req, res) => {
@@ -9,7 +10,6 @@ function configroute(app, bd){
 
   });
   app.post(`/${route}`, (req, res) => {
-    let UsuarioModel = require('../models/usuario-model');
     let user = new UsuarioModel(req.body.NOME, req.body.EMAIL, req.body.SENHA, 0);
     usuario.insereUsuario(user)
     .then((rows)=> res.send(rows))
@@ -17,13 +17,18 @@ function configroute(app, bd){
 
   });
 
-  app.delete(`/${route}`, (req, res) =>{
-
+  app.delete(`/${route}/:email`, (req, res) =>{
+    usuario.deletaUsuario(req.params.email)
+    .then((rows)=> res.send(rows))
+    .catch((err) => res.send({mensagem: "Falha ao deletar usuário"}));
 
   });
 
-  app.put(`/${route}`, (req, res) =>{
-
+  app.put(`/${route}/:email`, (req, res) =>{
+    let user = new UsuarioModel(req.body.NOME, req.body.EMAIL, req.body.SENHA, 0);
+    usuario.atualizaUsuario(user, req.params.email)
+    .then((rows) => res.send(rows))
+    .catch((err) => res.send({mensagem: "Falha ao atualizar usuário"}));
 
   });
 }

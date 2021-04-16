@@ -1,3 +1,5 @@
+const TarefaModel = require('../models/tarefa-model');
+
 class TarefaDAO{
     constructor(bd){
         this.bd = bd;
@@ -9,7 +11,8 @@ class TarefaDAO{
                 if(err){
                   reject(err);
                 }else{
-                  resolve(rows);
+                    let tarefasASeremCumpridas = rows.map(t => new TarefaModel(t.TITULO, t.DESCRICAO, t.STATUS, t.DATACRIACAO, t.ID_USUARIO));
+                    resolve(tarefasASeremCumpridas);
                 }
             })
         })
