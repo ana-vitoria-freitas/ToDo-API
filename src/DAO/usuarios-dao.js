@@ -4,19 +4,23 @@ class UsuarioDAO {
     }
 
     listaUsuarios() {
-        return new Promise((resolve, reject) => {
-            this.bd.all("SELECT * FROM USUARIOS", (err, rows) => {
-                if (err) {
-                    reject(err);
-                } else {
+        return new Promise((resolve, reject) =>{
+            this.bd.all("SELECT * FROM USUARIOS", (err, rows) =>{
+                if(err){
+                  reject(err);
+                }else{
                     resolve(rows);
                 }
             })
         })
+
+
+
     }
 
     insereUsuario(user) {
-        return new Promise((resolve, reject) => {
+
+        return new Promise((resolve, reject) =>{
             this.bd.run("INSERT INTO USUARIOS (NOME, EMAIL, SENHA) VALUES (?,?,?)", user.nome, user.email, user.senha, (err) => {
                 if (err) {
                     reject(`Erro ao rodar consulta: ${err}`);
@@ -47,7 +51,7 @@ class UsuarioDAO {
         });
     }
 
-    atualizaUsuario(user, termoAtualizacao){
+    atualizaUsuario(user, termoAtualizacao) {
         return new Promise((resolve, reject) => {
             this.bd.all(`SELECT * FROM USUARIOS WHERE EMAIL='${termoAtualizacao}'`, (err, rows) => {
                 if (err) {

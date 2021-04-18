@@ -1,35 +1,34 @@
 const route = 'task';
 const TarefaDAO = require('../DAO/tarefa-dao');
+const TarefaModel = require('../models/tarefa-model');
 function configroute(app, bd){
   let tarefa = new TarefaDAO(bd);
 
-  app.get(`/${route}`, (req, res) =>{
-    tarefa.listaTarefas()
-    .then((rows)=> res.send(rows))
-    .catch((err) => res.send({mensagem: "Falha ao listar usuários"}));
+  app.get(`/${route}`, async function (req, res){
+    let result = await tarefa.listaTarefas();
+    res.send(result);
 
   });
 
-  app.post(`/${route}`, (req, res) => {
-    let TarefaModel = require('../models/tarefa-model');
+  app.post(`/${route}`, async function(res, req){
     let task = new TarefaModel(req.body.TITULO, req.body.DESCRICAO, req.body.STATUS, req.body.DATACRIACAO, req.body.ID_USUARIO);
-    tarefa.insereTarefa(task)
-    .then((rows)=> res.send(rows))
-    .catch((err) => res.send({mensagem: "Falha ao listar usuários"}));
+    let result = await tarefa.insereTarefa(task);
+    res.send(result);
 
   });
 
-
-  app.delete(`${route}`, (req, res) =>{
-
+  app.delete(`/${route}/:email`, async function(res, req){
+    let result = await tarefa.deletaTarefa(req.params.email);
+    res.send(result);
 
   });
 
-  app.put(`${route}`, (req, res) =>{
-
+  app.put(`/${route}/:email`, async function(res, req){
+    let task = new TarefaModel(req.body.TITULO, req.body.DESCRICAO, req.body.STATUS, req.body.DATACRIACAO, 0);
+    let result = await tarefa.atualizaTarefa(task, req.params.email);
+    res.send(result);
 
   });
 }
-
 
 module.exports = configroute;

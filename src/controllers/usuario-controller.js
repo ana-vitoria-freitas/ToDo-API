@@ -1,35 +1,29 @@
 const route = 'user';
-const User = require('../DAO/usuarios-dao');
+const UserDAO = require('../DAO/usuarios-dao');
 const UsuarioModel = require('../models/usuario-model');
 function configroute(app, bd){
-  let usuario = new User(bd);
-  app.get(`/${route}`, (req, res) => {
-    usuario.listaUsuarios()
-    .then((rows)=> res.send(rows))
-    .catch((err) => res.send({mensagem: "Falha ao listar usuários"}));
+  let usuario = new UserDAO(bd);
 
+  app.get(`/${route}`, async function (req, res) {
+    let result = await usuario.listaUsuarios();
+    res.send(result);
   });
-  app.post(`/${route}`, (req, res) => {
+
+  app.post(`/${route}`, async function (req, res){
     let user = new UsuarioModel(req.body.NOME, req.body.EMAIL, req.body.SENHA, 0);
-    usuario.insereUsuario(user)
-    .then((rows)=> res.send(rows))
-    .catch((err) => res.send({mensagem: "Falha ao listar usuários"}));
-
+    let result = await usuario.insereUsuario(user)
+    res.send(result);
   });
 
-  app.delete(`/${route}/:email`, (req, res) =>{
-    usuario.deletaUsuario(req.params.email)
-    .then((rows)=> res.send(rows))
-    .catch((err) => res.send({mensagem: "Falha ao deletar usuário"}));
-
+  app.delete(`/${route}/:email`, async function(req, res){
+    let result = await usuario.deletaUsuario(req.params.email);
+    res.send(result);
   });
 
-  app.put(`/${route}/:email`, (req, res) =>{
+  app.put(`/${route}/:email`, async function (req, res){
     let user = new UsuarioModel(req.body.NOME, req.body.EMAIL, req.body.SENHA, 0);
-    usuario.atualizaUsuario(user, req.params.email)
-    .then((rows) => res.send(rows))
-    .catch((err) => res.send({mensagem: "Falha ao atualizar usuário"}));
-
+    let result = await usuario.atualizaUsuario(user, req.params.email);
+    res.send(result);
   });
 }
 
