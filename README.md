@@ -34,9 +34,10 @@ O padrão de resultados que virão de uma requisição na rota ```/task``` deve 
   "DATACRIACAO": "2021-01-21",
   "ID_USUARIO": 6
 }
-
 ```
+O mesmo padrão acima deve ser esperado como resultados das seguintes rotas:
 
+- 
 
 
 
