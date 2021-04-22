@@ -54,7 +54,7 @@ Para podermos usufruir das rotas, podemos utilizar o software ```Insomnia``` par
 
 ``` $ npm run start ```
 
-A partir disso, a rota principal irá ser informada: ```http://localhost:3000 ```. Assim, basta consumir as rotas informadas acima para consumir a API no padrão REST.
+A partir disso, a rota principal irá ser informada: ```http://localhost:3000 ```. Assim, basta usufruir das rotas informadas acima para consumir a API no padrão REST.
 
 
 
