@@ -30,6 +30,7 @@ O padrão de resultados que virão de uma requisição na rota ```/task``` deve 
 {
   "ID": 1,
   "TITULO": "Levar o cachorro para passear",
+  "DESCRICAO": "Levar o Alfredo ao parque perto de casa",
   "STATUS": "TODO",
   "DATACRIACAO": "2021-01-21",
   "ID_USUARIO": 6
