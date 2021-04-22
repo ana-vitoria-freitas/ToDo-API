@@ -38,7 +38,10 @@ O padrão de resultados que virão de uma requisição na rota ```/task``` deve 
 ```
 O mesmo padrão acima deve ser esperado como resultados das seguintes rotas:
 
-- 
+- Listagem de *todas as tarefas*: ```GET /task```;
+- Listagem de *uma tarefa em específico*: ```GET /task/<id_tarefa>```;
+- *Inserção* de uma tarefa: ```POST /task```, lembrando que a nova tarefa a ser inserida deve constar no body da requisição;
+- *Atualização* de uma tarefa: 
 
 
 
