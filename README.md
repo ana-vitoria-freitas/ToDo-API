@@ -46,7 +46,8 @@ O mesmo padrão acima deve ser esperado como resultados das seguintes rotas:
 
 ## Utilização da aplicação
 
-Primeiramente, é preciso instalar as depêndencias do projeto, é preciso ir até o arquivo ```package.json``` e verificar as depêndencias 
+Primeiramente, é preciso instalar as depêndencias do projeto, e para isso basta digitar o seguinte comando no diretório raíz do projeto:
+```$ npm run requirements```
 
 Para podermos usufruir das rotas, podemos utilizar o software ```Insomnia``` para nos auxiliar com os verbos HTTP e as rotas. Além disso, para subirmos o servidor, basta estar na pasta raiz do projeto e digitar o seguinte comando:
 
