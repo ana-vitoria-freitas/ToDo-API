@@ -46,8 +46,13 @@ O mesmo padrão acima deve ser esperado como resultados das seguintes rotas:
 
 ## Utilização da aplicação
 
+Primeiramente, é preciso instalar as depêndencias do projeto, é preciso ir até o arquivo ```package.json``` e verificar as depêndencias 
+
 Para podermos usufruir das rotas, podemos utilizar o software ```Insomnia``` para nos auxiliar com os verbos HTTP e as rotas. Além disso, para subirmos o servidor, basta estar na pasta raiz do projeto e digitar o seguinte comando:
+
 ``` $ npm run start ```
+
+A partir disso, a rota principal irá ser informada: ```http://localhost:3000 ```. Assim, basta consumir as rotas informadas acima para consumir a API no padrão REST.
 
 
 
