@@ -41,7 +41,15 @@ O mesmo padrão acima deve ser esperado como resultados das seguintes rotas:
 - Listagem de *todas as tarefas*: ```GET /task```;
 - Listagem de *uma tarefa em específico*: ```GET /task/<id_tarefa>```;
 - *Inserção* de uma tarefa: ```POST /task```, lembrando que a nova tarefa a ser inserida deve constar no body da requisição;
-- *Atualização* de uma tarefa: 
+- *Atualização* de uma tarefa: ```PUT /task/<id_tarefa>``` relembrando que a nova tarefa a ser inserida no lgar da antiga deve constar no body da requesição;
+- *Deleção* de uma tarefa: ```DELETE /task/<id_tarefa>```.
+
+## Utilização da aplicação
+
+Para podermos usufruir das rotas, podemos utilizar o software ```Insomnia``` para nos auxiliar com os verbos HTTP e as rotas. Além disso, para subirmos o servidor, basta estar na pasta raiz do projeto e digitar o seguinte comando:
+``` $ npm run start ```
+
+
 
 
 
