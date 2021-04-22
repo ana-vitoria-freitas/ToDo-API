@@ -1,15 +1,11 @@
 # ToDo API
 
-Implmentando uma API no modelo REST 
+Implmentando uma API no modelo REST, utilizando Node.js e SQLite.
 
-## Comandos
+### Rotas
 
-No diretório do projeto:
+- Usuários:
+  É possível listar todos os usuários apenas utilizando ```GET /user```;
+  Para listar um usuário específico, basta seguir a rota ```GET /user/<email_usuario>```;
 
-- Para ver as configurações das rotas de Tarefa e de Usuário, basta digitar no promt de comando:
 
-```npm run start ```
-
-- Para reconfigurar as rotas e usufruir da atualização automática, basta digitar no promt de comando:
-
-```npm run dev ```
